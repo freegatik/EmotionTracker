@@ -1,0 +1,436 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "addAlert_text" : {
+      "comment" : "Add alert text",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить напоминание"
+          }
+        }
+      }
+    },
+    "addNoteButton_title" : {
+      "comment" : "AddNoteButton title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить запись"
+          }
+        }
+      }
+    },
+    "alert_log_cancel" : {
+      "comment" : "Log screen alert cancel",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отмена"
+          }
+        }
+      }
+    },
+    "alert_log_message" : {
+      "comment" : "Log screen alert message",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите дневную цель"
+          }
+        }
+      }
+    },
+    "alert_log_title" : {
+      "comment" : "Log screen alert title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дневная цель"
+          }
+        }
+      }
+    },
+    "alert_title" : {
+      "comment" : "Alert settings switcher title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Присылать напоминания"
+          }
+        }
+      }
+    },
+    "apple_id_button_title" : {
+      "comment" : "Apple ID button title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Войти через Apple ID"
+          }
+        }
+      }
+    },
+    "cancelButton_text" : {
+      "comment" : "Cancel button text",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отмена"
+          }
+        }
+      }
+    },
+    "dailyGoalLabel_text" : {
+      "comment" : "Daily goal label text",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "в день:"
+          }
+        }
+      }
+    },
+    "defaultProfileFullNameLabel_text" : {
+      "comment" : "Default profile full name label text",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Иван Иванов"
+          }
+        }
+      }
+    },
+    "duplicatedTagsAlert_message" : {
+      "comment" : "Duplicated tags alert message",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тег уже присутствует в данной секции"
+          }
+        }
+      }
+    },
+    "duplicatedTagsAlert_title" : {
+      "comment" : "Duplicated tags alert title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ошибка"
+          }
+        }
+      }
+    },
+    "editNoteNavigation_title" : {
+      "comment" : "EditNote screen navigation title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запись"
+          }
+        }
+      }
+    },
+    "faceID_title" : {
+      "comment" : "Face ID settings switcher title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вход по распознаванию лица"
+          }
+        }
+      }
+    },
+    "feelingLabel_text" : {
+      "comment" : "Feeling label text",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Я чувствую"
+          }
+        }
+      }
+    },
+    "fewDays" : {
+      "comment" : "Few days pluralize",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "дня"
+          }
+        }
+      }
+    },
+    "fewNotes" : {
+      "comment" : "Few notes pluralize",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "записи"
+          }
+        }
+      }
+    },
+    "firstVC_title" : {
+      "comment" : "first VC title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Эмоции по категориям"
+          }
+        }
+      }
+    },
+    "fourthVC_title" : {
+      "comment" : "fourth VC title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваше настроение в течение дня"
+          }
+        }
+      }
+    },
+    "log_title" : {
+      "comment" : "Log screen title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Что вы сейчас чувствуете?"
+          }
+        }
+      }
+    },
+    "logTabBarItem_title" : {
+      "comment" : "Log tab bar item title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Журнал"
+          }
+        }
+      }
+    },
+    "manyDays" : {
+      "comment" : "Many days pluralize",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "дней"
+          }
+        }
+      }
+    },
+    "manyNotes" : {
+      "comment" : "Many notes pluralize",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "записей"
+          }
+        }
+      }
+    },
+    "oneDay" : {
+      "comment" : "One day pluralize",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "день"
+          }
+        }
+      }
+    },
+    "oneNote" : {
+      "comment" : "One note pluralize",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "запись"
+          }
+        }
+      }
+    },
+    "pickButton_text" : {
+      "comment" : "Pick button text",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выбрать"
+          }
+        }
+      }
+    },
+    "pickEmotion_title" : {
+      "comment" : "Pick emotion title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите эмоцию, лучше всего описывающую, что вы сейчас чувствуете"
+          }
+        }
+      }
+    },
+    "pickTime_text" : {
+      "comment" : "Pick time text",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите время"
+          }
+        }
+      }
+    },
+    "saveNoteButton_title" : {
+      "comment" : "Save note button title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохранить"
+          }
+        }
+      }
+    },
+    "secondVC_title" : {
+      "comment" : "second VC title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Эмоции по дням недели"
+          }
+        }
+      }
+    },
+    "settings_title" : {
+      "comment" : "Settings screen title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройки"
+          }
+        }
+      }
+    },
+    "settingsTabBarItem_title" : {
+      "comment" : "Settings tab bar item title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройки"
+          }
+        }
+      }
+    },
+    "statisticsTabBarItem_title" : {
+      "comment" : "Statistics tab bar item title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Статистика"
+          }
+        }
+      }
+    },
+    "streakLabel_text" : {
+      "comment" : "Streak label text",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "серия:"
+          }
+        }
+      }
+    },
+    "thirdVC_title" : {
+      "comment" : "third VC title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Самые частые эмоции"
+          }
+        }
+      }
+    },
+    "today_string" : {
+      "comment" : "Today string",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "today"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "сегодня"
+          }
+        }
+      }
+    },
+    "welcome_title" : {
+      "comment" : "Welcome screen title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добро пожаловать"
+          }
+        }
+      }
+    },
+    "yesterday_string" : {
+      "comment" : "Yesterday string",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yesterday"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "вчера"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
