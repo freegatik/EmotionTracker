@@ -11,9 +11,17 @@ import Foundation
 final class CoreDataManager {
     static let shared = CoreDataManager()
     
-    private init() {}
-    
-    lazy var persistentContainer: NSPersistentContainer = {
+    let persistentContainer: NSPersistentContainer
+
+    private init() {
+        persistentContainer = Self.makePersistentContainer()
+    }
+
+    init(persistentContainer: NSPersistentContainer) {
+        self.persistentContainer = persistentContainer
+    }
+
+    private static func makePersistentContainer() -> NSPersistentContainer {
         let container = NSPersistentContainer(name: "Aura")
         container.loadPersistentStores { _, error in
             if let error = error {
@@ -22,7 +30,7 @@ final class CoreDataManager {
             }
         }
         return container
-    }()
+    }
     
     var context: NSManagedObjectContext {
         persistentContainer.viewContext

@@ -70,6 +70,7 @@ class SettingsViewController: UIViewController {
 private extension SettingsViewController {
     func setupUI() {
         view.backgroundColor = Constants.backgroundColor
+        view.accessibilityIdentifier = "SettingsView"
         configureNavigationBar()
         configureSettingsTitleLabel()
         configureProfileImageView()
@@ -92,6 +93,7 @@ private extension SettingsViewController {
         settingsTitleLabel.font = Constants.settingsTitleLabelFont
         settingsTitleLabel.textColor = Constants.settingsTitleLabelTextColor
         settingsTitleLabel.textAlignment = .left
+        settingsTitleLabel.accessibilityIdentifier = "SettingsTitleLabel"
     }
     
     func configureProfileImageView() {

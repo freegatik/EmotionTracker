@@ -24,7 +24,11 @@ protocol CoreDataServiceProtocol {
 }
 
 final class CoreDataService: CoreDataServiceProtocol {
-    private let coreDataManager = CoreDataManager.shared
+    private let coreDataManager: CoreDataManager
+
+    init(coreDataManager: CoreDataManager = .shared) {
+        self.coreDataManager = coreDataManager
+    }
     
     // MARK: - UserSettings
     

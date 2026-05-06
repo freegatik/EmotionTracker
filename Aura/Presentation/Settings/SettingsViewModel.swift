@@ -138,7 +138,7 @@ final class SettingsViewModel {
                     if success {
                         self.isBiometricEnabled = true
                         self.coreDataService.isBiometricEnabled = true
-                    } else if let error = error {
+                    } else if error != nil {
                         self.isBiometricEnabled = false
                         self.coreDataService.isBiometricEnabled = false
                     }

@@ -104,6 +104,7 @@ private extension StatisticsViewController {
 private extension StatisticsViewController {
     func setupUI() {
         view.backgroundColor = Constants.backgroundColor
+        view.accessibilityIdentifier = "StatisticsView"
         
         configureNavigationBar()
         configureBackgroundView()

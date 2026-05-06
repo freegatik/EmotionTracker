@@ -23,7 +23,7 @@ final class LogViewModel {
     
     private func loadEmotionRecords() {
         let records = coreDataService.fetchEmotionRecords()
-        for record in records {
+        for record in records.reversed() {
             let card = createEmotionCard(
                 time: record.date?.formattedRelativeTime() ?? "",
                 emotion: record.emotion ?? "",

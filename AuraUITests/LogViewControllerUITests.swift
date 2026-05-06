@@ -16,10 +16,8 @@ final class LogViewControllerUITests: XCTestCase {
         super.setUp()
         continueAfterFailure = false
         app = XCUIApplication()
+        app.launchArguments.append("UITEST_SKIP_WELCOME")
         app.launch()
-        
-        let appleIDButton = app.otherElements["AppleIDButton"]
-        appleIDButton.tap()
     }
     
     func testMainElementsExist() {
