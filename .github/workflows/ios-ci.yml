@@ -1,0 +1,125 @@
+name: iOS CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+concurrency:
+  group: ios-ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  XCODE_PROJECT: Aura.xcodeproj
+  XCODE_SCHEME: Aura
+  SIM_DESTINATION: platform=iOS Simulator,name=iPhone 16,OS=latest
+
+jobs:
+  swiftlint:
+    name: SwiftLint
+    runs-on: macos-14
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install SwiftLint
+        run: brew install swiftlint
+
+      - name: Lint
+        run: swiftlint --reporter github-actions-logging
+
+  static-analysis:
+    name: Static analysis (Clang analyzer)
+    runs-on: macos-14
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Analyze
+        env:
+          CODE_SIGNING_ALLOWED: NO
+        run: |
+          xcodebuild analyze \
+            -project "$XCODE_PROJECT" \
+            -scheme "$XCODE_SCHEME" \
+            -configuration Debug \
+            -destination "$SIM_DESTINATION"
+
+  build-debug:
+    name: Build (Debug, Simulator)
+    runs-on: macos-14
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Debug
+        env:
+          CODE_SIGNING_ALLOWED: NO
+        run: |
+          xcodebuild build \
+            -project "$XCODE_PROJECT" \
+            -scheme "$XCODE_SCHEME" \
+            -configuration Debug \
+            -destination "$SIM_DESTINATION"
+
+  build-release:
+    name: Build (Release, Simulator)
+    runs-on: macos-14
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Release
+        env:
+          CODE_SIGNING_ALLOWED: NO
+        run: |
+          xcodebuild build \
+            -project "$XCODE_PROJECT" \
+            -scheme "$XCODE_SCHEME" \
+            -configuration Release \
+            -destination 'generic/platform=iOS Simulator'
+
+  tests:
+    name: Tests (unit + UI, scheme defaults)
+    runs-on: macos-14
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run all tests
+        env:
+          CODE_SIGNING_ALLOWED: NO
+        run: |
+          xcodebuild test \
+            -project "$XCODE_PROJECT" \
+            -scheme "$XCODE_SCHEME" \
+            -destination "$SIM_DESTINATION" \
+            -enableCodeCoverage YES \
+            -resultBundlePath TestResults.xcresult
+
+      - name: Code coverage summary
+        if: always()
+        run: |
+          if [[ ! -d TestResults.xcresult ]]; then
+            echo "No .xcresult bundle; skipping coverage."
+            exit 0
+          fi
+          echo "## Code coverage" >> "$GITHUB_STEP_SUMMARY"
+          xcrun xccov view --report --only-targets TestResults.xcresult 2>&1 | tee -a "$GITHUB_STEP_SUMMARY" || true
+
+      - name: Upload test & coverage bundle (.xcresult)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-xcresult
+          path: TestResults.xcresult
+          if-no-files-found: ignore

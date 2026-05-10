@@ -13,13 +13,17 @@ final class LogCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     
     private weak var logViewController: LogViewController?
+    private let dependencies: AppDependencies
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, dependencies: AppDependencies) {
         self.navigationController = navigationController
+        self.dependencies = dependencies
     }
     
     func start() {
-        let logViewController = LogViewController()
+        let logViewController = LogViewController(
+            viewModel: LogViewModel(coreDataService: dependencies.coreDataService)
+        )
         logViewController.coordinator = self
         self.logViewController = logViewController
         navigationController.setViewControllers([logViewController], animated: false)

@@ -11,12 +11,20 @@ final class SettingsCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     
-    init(navigationController: UINavigationController) {
+    private let dependencies: AppDependencies
+    
+    init(navigationController: UINavigationController, dependencies: AppDependencies) {
         self.navigationController = navigationController
+        self.dependencies = dependencies
     }
     
     func start() {
-        let settingsViewController = SettingsViewController()
+        let viewModel = SettingsViewModel(
+            notificationService: dependencies.notificationService,
+            coreDataService: dependencies.coreDataService,
+            biometricService: dependencies.biometricService
+        )
+        let settingsViewController = SettingsViewController(viewModel: viewModel)
         settingsViewController.coordinator = self
         navigationController.setViewControllers([settingsViewController], animated: false)
     }

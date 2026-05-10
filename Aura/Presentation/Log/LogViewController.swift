@@ -19,9 +19,19 @@ final class LogViewController: UIViewController {
     private var activityRing: ActivityRingView?
     private var addNoteButton = AddNoteButton()
     
-    private var viewModel = LogViewModel()
+    private let viewModel: LogViewModel
     
     private var collectionView: UICollectionView!
+    
+    init(viewModel: LogViewModel = LogViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

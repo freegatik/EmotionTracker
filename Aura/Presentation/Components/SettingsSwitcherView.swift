@@ -38,6 +38,10 @@ class SettingsSwitcherView: UIView {
     func getSwitchState() -> Bool {
         return switcher.isOn
     }
+    
+    func setSwitchAccessibilityIdentifier(_ identifier: String) {
+        switcher.accessibilityIdentifier = identifier
+    }
 }
 
 // MARK: - Private Setup

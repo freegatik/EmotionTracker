@@ -29,10 +29,14 @@ No network layer.
 
 ## Tests
 
-- **Unit** (`AuraTests`): `SettingsViewModel` + notifications, `LogViewModel`-related cases with mocks.
-- **UI** (`AuraUITests`): welcome/log smoke; template tests in default UITest target.
+- **Unit** (`AuraTests`): view models (`Settings`, `Log`, notes, statistics helpers), `CoreDataService` against an in-memory stack, **coordinators** (`AppCoordinator`, `LogCoordinator`, `TabBarCoordinator`), and **Core Data concurrency** (`performAndWait` under parallel load).
+- **UI** (`AuraUITests`): welcome/log smoke, tab navigation, add-note flow, settings switches.
 
-CI runs unit tests only (see `.github/workflows/ios.yml`).
+CI runs SwiftLint, static analysis, Debug/Release simulator builds, and the full test action (unit + UI) in separate jobs — see `.github/workflows/ios-ci.yml`.
+
+## Composition root
+
+`AppDependencies` is the app **composition root**: `CoreDataService`, `BiometricService`, and `NotificationService` are created in `production()` and passed through `AppCoordinator` → `WelcomeCoordinator` / `TabBarCoordinator` → feature coordinators. `LogViewController` receives a `LogViewModel` built with the shared `CoreDataServiceProtocol`; `SettingsViewController` gets a `SettingsViewModel` built from the same graph. Use `AppDependencies.testing(...)` in unit tests to inject mocks.
 
 ## Build
 

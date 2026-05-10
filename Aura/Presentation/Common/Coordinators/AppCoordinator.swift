@@ -11,17 +11,15 @@ final class AppCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     
-    private let coreDataService: CoreDataServiceProtocol
-    private let biometricService: BiometricServiceProtocol
+    private let dependencies: AppDependencies
     
     init(navigationController: UINavigationController, dependencies: AppDependencies) {
         self.navigationController = navigationController
-        self.coreDataService = dependencies.coreDataService
-        self.biometricService = dependencies.biometricService
+        self.dependencies = dependencies
     }
     
     func start() {
-        if coreDataService.isBiometricEnabled {
+        if dependencies.coreDataService.isBiometricEnabled {
             showBiometricAuth()
         } else {
             showWelcome()
@@ -29,7 +27,7 @@ final class AppCoordinator: Coordinator {
     }
     
     private func showBiometricAuth() {
-        let authVC = BiometricAuthViewController(biometricService: biometricService) { [weak self] in
+        let authVC = BiometricAuthViewController(biometricService: dependencies.biometricService) { [weak self] in
             self?.showTabBar()
         }
         
@@ -38,19 +36,25 @@ final class AppCoordinator: Coordinator {
     }
     
     private func showWelcome() {
-        let welcomeCoordinator = WelcomeCoordinator(navigationController: navigationController)
+        let welcomeCoordinator = WelcomeCoordinator(
+            navigationController: navigationController,
+            dependencies: dependencies
+        )
         childCoordinators.append(welcomeCoordinator)
         welcomeCoordinator.start()
     }
     
     private func showTabBar() {
-        let tabBarCoordinator = TabBarCoordinator(navigationController: navigationController)
+        let tabBarCoordinator = TabBarCoordinator(
+            navigationController: navigationController,
+            dependencies: dependencies
+        )
         childCoordinators.append(tabBarCoordinator)
         tabBarCoordinator.start()
     }
     
     func handleAppDidBecomeActive() {
-        if coreDataService.isBiometricEnabled {
+        if dependencies.coreDataService.isBiometricEnabled {
             showBiometricAuth()
         }
     }

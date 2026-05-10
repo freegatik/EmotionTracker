@@ -12,8 +12,11 @@ final class WelcomeCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     
-    init(navigationController: UINavigationController) {
+    private let dependencies: AppDependencies
+    
+    init(navigationController: UINavigationController, dependencies: AppDependencies) {
         self.navigationController = navigationController
+        self.dependencies = dependencies
     }
     
     func start() {
@@ -56,7 +59,10 @@ final class WelcomeCoordinator: Coordinator {
     }
     
     private func showTabBar() {
-        let tabBarCoordinator = TabBarCoordinator(navigationController: navigationController)
+        let tabBarCoordinator = TabBarCoordinator(
+            navigationController: navigationController,
+            dependencies: dependencies
+        )
         childCoordinators.append(tabBarCoordinator)
         finish()
         tabBarCoordinator.start()

@@ -25,6 +25,10 @@ final class CoreDataServiceTests: XCTestCase {
         super.tearDown()
     }
 
+    func testFetchEmotionRecordsIsEmptyForFreshStore() {
+        XCTAssertTrue(coreDataService.fetchEmotionRecords().isEmpty)
+    }
+
     func testSaveEmotionRecordPersistsRecord() {
         coreDataService.saveEmotionRecord(
             emotion: "Счастье",

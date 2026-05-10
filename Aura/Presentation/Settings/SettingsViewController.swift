@@ -158,6 +158,9 @@ private extension SettingsViewController {
     }
     
     func setupSwitchers() {
+        alertSettingsSwitcherView.setSwitchAccessibilityIdentifier("NotificationsSwitch")
+        touchIDSettingsSwitcherView.setSwitchAccessibilityIdentifier("BiometricSwitch")
+        
         alertSettingsSwitcherView.onSwitchChanged = { [weak self] isOn in
             self?.viewModel.toggleNotifications(isOn)
         }

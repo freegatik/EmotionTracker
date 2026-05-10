@@ -11,16 +11,25 @@ final class TabBarCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     
-    init(navigationController: UINavigationController) {
+    private let dependencies: AppDependencies
+    
+    init(navigationController: UINavigationController, dependencies: AppDependencies) {
         self.navigationController = navigationController
+        self.dependencies = dependencies
     }
     
     func start() {
         let tabBarController = TabBarViewController()
         
-        let logCoordinator = LogCoordinator(navigationController: UINavigationController())
+        let logCoordinator = LogCoordinator(
+            navigationController: UINavigationController(),
+            dependencies: dependencies
+        )
         let statisticsCoordinator = StatisticsCoordinator(navigationController: UINavigationController())
-        let settingsCoordinator = SettingsCoordinator(navigationController: UINavigationController())
+        let settingsCoordinator = SettingsCoordinator(
+            navigationController: UINavigationController(),
+            dependencies: dependencies
+        )
         
         logCoordinator.start()
         statisticsCoordinator.start()

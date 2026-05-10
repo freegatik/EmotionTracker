@@ -10,11 +10,27 @@ import Foundation
 struct AppDependencies {
     let coreDataService: CoreDataServiceProtocol
     let biometricService: BiometricServiceProtocol
+    let notificationService: NotificationServiceProtocol
 
     static func production() -> AppDependencies {
+        let coreDataService = CoreDataService()
+        return AppDependencies(
+            coreDataService: coreDataService,
+            biometricService: BiometricService(),
+            notificationService: NotificationService.shared
+        )
+    }
+
+    /// Explicit graph for tests and previews (no singletons required).
+    static func testing(
+        coreDataService: CoreDataServiceProtocol,
+        biometricService: BiometricServiceProtocol,
+        notificationService: NotificationServiceProtocol
+    ) -> AppDependencies {
         AppDependencies(
-            coreDataService: CoreDataService(),
-            biometricService: BiometricService()
+            coreDataService: coreDataService,
+            biometricService: biometricService,
+            notificationService: notificationService
         )
     }
 }
