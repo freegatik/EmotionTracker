@@ -39,8 +39,14 @@ final class CoreDataContextConcurrencyTests: XCTestCase {
                 XCTFail("View context save failed: \(error)")
             }
             let request = EmotionRecord.fetchRequest()
-            XCTAssertEqual(try stack.context.count(for: request), 1)
-            XCTAssertEqual(try stack.context.fetch(request).first?.emotion, "Nested")
+            do {
+                let count = try stack.context.count(for: request)
+                XCTAssertEqual(count, 1)
+                let rows = try stack.context.fetch(request)
+                XCTAssertEqual(rows.first?.emotion, "Nested")
+            } catch {
+                XCTFail("Count/fetch failed: \(error)")
+            }
         }
     }
 }
