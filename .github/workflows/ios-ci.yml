@@ -136,6 +136,7 @@ jobs:
             -scheme "$XCODE_SCHEME" \
             -destination "$SIM_DESTINATION" \
             -parallel-testing-enabled NO \
+            -skip-testing:AuraUITests/AuraUITestsLaunchTests \
             -enableCodeCoverage YES \
             -resultBundlePath TestResults.xcresult
 

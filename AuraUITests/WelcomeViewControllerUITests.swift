@@ -7,7 +7,6 @@
 
 
 import XCTest
-@testable import Aura
 
 final class WelcomeViewControllerUITests: XCTestCase {
     var app: XCUIApplication!
