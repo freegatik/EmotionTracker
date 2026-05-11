@@ -135,6 +135,7 @@ jobs:
             -project "$XCODE_PROJECT" \
             -scheme "$XCODE_SCHEME" \
             -destination "$SIM_DESTINATION" \
+            -parallel-testing-enabled NO \
             -enableCodeCoverage YES \
             -resultBundlePath TestResults.xcresult
 

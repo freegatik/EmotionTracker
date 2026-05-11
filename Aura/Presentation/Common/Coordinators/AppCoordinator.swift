@@ -19,6 +19,10 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
+        if ProcessInfo.processInfo.arguments.contains("UITEST_SKIP_WELCOME") {
+            showWelcome()
+            return
+        }
         if dependencies.coreDataService.isBiometricEnabled {
             showBiometricAuth()
         } else {
@@ -54,6 +58,9 @@ final class AppCoordinator: Coordinator {
     }
     
     func handleAppDidBecomeActive() {
+        if ProcessInfo.processInfo.arguments.contains("UITEST_SKIP_WELCOME") {
+            return
+        }
         if dependencies.coreDataService.isBiometricEnabled {
             showBiometricAuth()
         }
